@@ -1,20 +1,16 @@
 package com.manhdung.news;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.tintuc.adapter.MenuAdapter;
@@ -33,10 +29,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -139,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
                     //click len bai post
                    // Toast.makeText(context, "click len bai post", Toast.LENGTH_SHORT).show();
                     PostEntity postEntity = (PostEntity) o;
-
                     Intent intent = new Intent(context, DetailActivity.class);
                     intent.putExtra("post", postEntity);
                     startActivity(intent);

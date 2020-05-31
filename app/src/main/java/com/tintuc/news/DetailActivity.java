@@ -2,6 +2,7 @@ package com.manhdung.news;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
@@ -30,7 +31,6 @@ public class DetailActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         final PostEntity postEntity = (PostEntity) bundle.getSerializable("post");
-
         imgBack = findViewById(R.id.img_back);
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +41,7 @@ public class DetailActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.wv_content);
         tvTitle = findViewById(R.id.tv_title2);
-       // tvTitle.setText(postEntity.getTitle());
+        tvTitle.setText(postEntity.getTitle());
 
         NewsApi.getPostDetail(this, postEntity.getId(), new HttpCallback() {
             @Override
@@ -52,7 +52,7 @@ public class DetailActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(s);
                             PostEntity postEntity1 = new PostEntity(jsonObject);
-                            String data = "<html><head><title></title><head></head><body>"+postEntity.getContent()+"</body></html>";
+                            String data = "<html><head><title></title><head></head><body>"+postEntity1.getContent()+"</body></html>";
                             webView.loadData(data, "text/html; charset=utf-8", "utf-8");
                         }catch (Exception e){
                             e.printStackTrace();
